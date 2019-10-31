@@ -1,0 +1,45 @@
+{
+  "name": "paraphrase",
+  "version": "1.7.2",
+  "description": "🧩 Create flavoured string template interpolation",
+  "keywords": [
+    "string",
+    "replace",
+    "phrase",
+    "template",
+    "placement",
+    "interpolation",
+    "custom",
+    "🧩"
+  ],
+  "author": "omrilotan",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/omrilotan/paraphrase.git"
+  },
+  "homepage": "https://omrilotan.com/paraphrase/",
+  "main": "src/index.js",
+  "browser": "index.js",
+  "scripts": {
+    "build": "webpack --config .webpack.config.js",
+    "test": "mocha '**/spec.js' --exclude 'node_modules'",
+    "lint": "eslint 'src/**/*.js'",
+    "prepublishOnly": "npm run build"
+  },
+  "dependencies": {
+    "notate": "^1.1.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.6.4",
+    "@omrilotan/eslint-config": "^1.1.0",
+    "babel-loader": "^8.0.6",
+    "babelrc": "0.0.4",
+    "ecma-webpack-plugin": "0.0.0",
+    "eslint": "^6.6.0",
+    "eslint-plugin-log": "^1.2.3",
+    "mocha-setup": "0.0.1",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.10"
+  }
+}

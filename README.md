@@ -123,11 +123,3 @@ const phrase = require('paraphrase/hash');
 
 phrase.patterns // [ /#{([^{}]*)}/gm ]
 ```
-
-## Bundled version
-Environments which exclude node_modules from the transpiling pipeline should include the "browser" entry instead of "main". This exposes a bundled ES5 commonjs module.
-
-Also available for explicit import:
-```js
-const paraphrase = require('paraphrase/dist');
-```

@@ -1,6 +1,6 @@
 {
   "name": "paraphrase",
-  "version": "1.7.2",
+  "version": "1.7.3",
   "description": "🧩 Create flavoured string template interpolation",
   "keywords": [
     "string",

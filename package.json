@@ -34,7 +34,7 @@
     "@babel/core": "^7.6.4",
     "@omrilotan/eslint-config": "^1.1.0",
     "babel-loader": "^8.0.6",
-    "babelrc": "0.0.6",
+    "babelrc": "0.0.7",
     "chai": "^4.2.0",
     "ecma-webpack-plugin": "0.0.0",
     "eslint": "^6.6.0",

@@ -27,6 +27,7 @@ const VALID_RESULT_TYPES = Object.seal(['string', 'number']);
 
 module.exports = function paraphrase(...replacers) {
 	const options = {
+		recursive: true,
 		resolve: true,
 		clean: false,
 	};
@@ -43,7 +44,7 @@ module.exports = function paraphrase(...replacers) {
 	 */
 	function phraser(string = '', data, ...replacements) {
 		if (typeof string !== 'string') {
-			throw new TypeError(`paraphrase expects first argument to be a string, got a ${typeof string}`);
+			throw new TypeError(`paraphrase expects first argument to be a string, got a ${typeof string} (${string})`);
 		}
 
 		if (!data) {
@@ -66,7 +67,12 @@ module.exports = function paraphrase(...replacers) {
 			return VALID_RESULT_TYPES.includes(typeof replacement) ? replacement : options.clean ? '' : haystack;
 		}
 
-		return replacers.reduce((string, replacer) => string.replace(replacer, replace), string);
+		const result = replacers.reduce((string, replacer) => string.replace(replacer, replace), string);
+
+		return !options.recursive || string === result
+			?	result
+			: phraser(result, data, ...replacements)
+		;
 	}
 
 	phraser.patterns = replacers;
@@ -74,4 +80,9 @@ module.exports = function paraphrase(...replacers) {
 	return phraser;
 };
 
+/**
+ * Is this a basic object?
+ * @param  {any} obj
+ * @return {boolean}
+ */
 const isObject = obj => `${obj}` === '[object Object]';

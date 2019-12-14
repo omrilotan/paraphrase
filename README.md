@@ -24,6 +24,7 @@ One or more RegExp replacers, an optional options object at the end
 
 | option | meaning | type | default
 | - | - | - | -
+| recursive | Should continue to resolve result string until replacements have been exhausted | `Boolean` | `true`
 | resolve | Should resolve dot notations within the template | `Boolean` | `true`
 | clean | Should remove unmatched template instances | `Boolean` | `false`
 

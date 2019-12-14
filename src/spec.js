@@ -68,10 +68,25 @@ describe('paraphrase', () => {
 		});
 	});
 
+	describe('recursive replacements', () => {
+		const phrase = paraphrase(/\${([^{}]*)}/g);
+
+		it('Should replace recursively', () => {
+			const string = 'Hello, ${full_name}';
+			const data = {
+				full_name: '${first_name} ${last_name}',
+				first_name: 'Martin',
+				last_name: 'Prince',
+			};
+			expect(phrase(string, data)).to.equal('Hello, Martin Prince');
+		});
+	});
+
 	describe('options', () => {
 		describe('resolve nested data', () => {
 			const phrase = paraphrase(/\${([^{}]*)}/g);
 			const phraseNoResolve = paraphrase(/\${([^{}]*)}/g, {resolve: false});
+			const phraseNoRecursive = paraphrase(/\${([^{}]*)}/g, {recursive: false});
 
 			it('resolves dot notation', () => {
 				const string = 'Hello, ${name.first} ${name.last}';
@@ -113,6 +128,16 @@ describe('paraphrase', () => {
 				};
 
 				expect(phraseNoResolve(string, data)).to.equal('Hello, Martin Prince');
+			});
+
+			it('Should not replace pattern recursively', () => {
+				const string = 'Hello, ${full_name}';
+				const data = {
+					'full_name': '${first_name} ${last_name}',
+					first_name: 'Martin',
+					last_name: 'Prince',
+				};
+				expect(phraseNoRecursive(string, data)).to.equal('Hello, ${first_name} ${last_name}');
 			});
 		});
 

@@ -11,7 +11,7 @@ const notate = require('notate');
  * @type {Array}
  * @member {String|Number}
  */
-const VALID_RESULT_TYPES = Object.seal(['string', 'number']);
+const VALID_RESULT_TYPES = Object.seal([ 'string', 'number' ]);
 
 /**
  * Create new paraphrase method instance
@@ -52,7 +52,7 @@ module.exports = function paraphrase(...replacers) {
 		}
 
 		if (VALID_RESULT_TYPES.includes(typeof data)) {
-			data = [data, ...replacements];
+			data = [ data, ...replacements ];
 		}
 
 		/**

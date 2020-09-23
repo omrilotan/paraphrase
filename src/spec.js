@@ -14,7 +14,7 @@ describe('paraphrase', () => {
 			const first = 'Martin';
 			const last = 'Prince';
 
-			const res = phrase('Hello, ${ first } ${ first } ${ last }', {first, last});
+			const res = phrase('Hello, ${ first } ${ first } ${ last }', { first, last });
 			expect(phrase(res)).to.equal(`Hello, ${first} ${first} ${last}`);
 		});
 
@@ -26,7 +26,7 @@ describe('paraphrase', () => {
 			);
 			const first = 'Martin';
 			const last = 'Prince';
-			const res = phrase('Hello, ${ first } %{ first } {{ last }}', {first, last});
+			const res = phrase('Hello, ${ first } %{ first } {{ last }}', { first, last });
 			expect(phrase(res)).to.equal(`Hello, ${first} ${first} ${last}`);
 		});
 
@@ -43,10 +43,10 @@ describe('paraphrase', () => {
 		});
 
 		it('patterns array mutations does not affect the instance', () => {
-			const patterns = [/{{([^{}]*)}}/g];
+			const patterns = [ /{{([^{}]*)}}/g ];
 			const phrase = paraphrase(...patterns);
 			patterns.pop();
-			expect(phrase('{{ key }}', {key: 'value'})).equal('value');
+			expect(phrase('{{ key }}', { key: 'value' })).equal('value');
 			expect(patterns).to.have.lengthOf(0);
 			expect(phrase.patterns).to.have.lengthOf(1);
 		});
@@ -85,8 +85,8 @@ describe('paraphrase', () => {
 	describe('options', () => {
 		describe('resolve nested data', () => {
 			const phrase = paraphrase(/\${([^{}]*)}/g);
-			const phraseNoResolve = paraphrase(/\${([^{}]*)}/g, {resolve: false});
-			const phraseNoRecursive = paraphrase(/\${([^{}]*)}/g, {recursive: false});
+			const phraseNoResolve = paraphrase(/\${([^{}]*)}/g, { resolve: false });
+			const phraseNoRecursive = paraphrase(/\${([^{}]*)}/g, { recursive: false });
 
 			it('resolves dot notation', () => {
 				const string = 'Hello, ${name.first} ${name.last}';
@@ -143,14 +143,14 @@ describe('paraphrase', () => {
 
 		describe('clean parsing', () => {
 			it('Should leave unmatched template combinations', () => {
-				const parser = paraphrase(/\${([^{}]*)}/g, {clean: false});
+				const parser = paraphrase(/\${([^{}]*)}/g, { clean: false });
 				const string = 'Hello, ${name.first} ${name.last}';
 				const data = {};
 
 				expect(parser(string, data)).to.equal('Hello, ${name.first} ${name.last}');
 			});
 			it('Should remove unmatched template combinations', () => {
-				const parser = paraphrase(/\${([^{}]*)}/g, {clean: true});
+				const parser = paraphrase(/\${([^{}]*)}/g, { clean: true });
 				const string = 'Hello, ${name.first} ${name.last}';
 				const data = {};
 
@@ -166,10 +166,10 @@ describe('paraphrase', () => {
 			'single': 'Hello, {name} { last }',
 			'percent': 'Hello, %{name} %{ last }',
 			'hash': 'Hello, #{name} #{ last }',
-		}).forEach(([key, value]) => {
+		}).forEach(([ key, value ]) => {
 			it(key, () => {
 				expect(
-					require(`./${key}`)(value, {name: 'Martin', last: 'King'}),
+					require(`./${key}`)(value, { name: 'Martin', last: 'King' }),
 				).to.equal(
 					'Hello, Martin King',
 				);

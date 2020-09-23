@@ -36,7 +36,7 @@
     "babel-loader": "^8.0.6",
     "babelrc": "0.0.7",
     "chai": "^4.2.0",
-    "ecma-webpack-plugin": "0.0.0",
+    "ecma-webpack-plugin": "1.0.0",
     "eslint": "^7.0.0",
     "eslint-plugin-log": "^1.2.3",
     "mocha": "^8.0.1",

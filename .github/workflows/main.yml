@@ -1,13 +1,13 @@
 name: Publish
-
-on: [push]
-
+on:
+  - push
 jobs:
   build:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [ '12' ]
+        node-version:
+          - '14'
     steps:
     - uses: actions/checkout@v1
     - name: Install dependencies

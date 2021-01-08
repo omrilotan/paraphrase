@@ -1,1 +1,6 @@
 node_modules
+/dollar/*
+/double/*
+/hash/*
+/percent/*
+/single/*

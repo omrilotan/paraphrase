@@ -1,4 +1,4 @@
-# 2.0.0 TBD
+# 2.0.0 2021-05-11
 
 ## Breaking change
 

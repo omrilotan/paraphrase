@@ -1,12 +1,2 @@
-.DS_Store
-.cache
 *.log
-*.map
 node_modules
-package-lock.json
-/index.js
-/dollar
-/double
-/hash
-/percent
-/single

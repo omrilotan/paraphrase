@@ -11,7 +11,7 @@ npm i paraphrase
 Creates new paraphrase method instance
 
 ```js
-const paraphrase = require('paraphrase');
+import { paraphrase } from 'paraphrase';
 const phrase = paraphrase(/\${([^{}]*)}/gm); // Create a new phrase function using a RegExp match
 
 phrase('Hello, ${name}', {name: 'Martin'}); // Hello, Martin
@@ -84,21 +84,21 @@ phrase('Hello, ${0} ${1}', 'Martin', 'Prince'); // Hello, Martin Prince
 
 ### dollar `${...}`
 ```js
-const phrase = require('paraphrase/dollar');
+import { dollar as phrase } from 'paraphrase';
 
 phrase('Hello, ${name}', {name: 'Martin'}); // Hello, Martin
 ```
 
 ### double `{{...}}`
 ```js
-const phrase = require('paraphrase/double');
+import { double as phrase } from 'paraphrase';
 
 phrase('Hello, {{name}}', {name: 'Martin'}); // Hello, Martin
 ```
 
 ### single `{...}`
 ```js
-const phrase = require('paraphrase/single');
+import { single as phrase } from 'paraphrase';
 
 phrase('Hello, {name}', {name: 'Martin'}); // Hello, Martin
 ```
@@ -112,15 +112,22 @@ phrase('Hello, %{name}', {name: 'Martin'}); // Hello, Martin
 
 ### hash `#{...}` (ruby style)
 ```js
-const phrase = require('paraphrase/hash');
+import { hash as phrase } from 'paraphrase';
 
 phrase('Hello, #{name}', {name: 'Martin'}); // Hello, Martin
 ```
 
-## patterns
-A paraphrase instance exposes access to it's patterns array
+### loose. Accommodate all of the above
 ```js
-const phrase = require('paraphrase/hash');
+import { loose as phrase } from 'paraphrase';
+
+phrase('Hello, #{name.first} {name.last}', {name: { first: 'Martin', last: 'Prince' }); // Hello, Martin Prince
+```
+
+## patterns
+A paraphrase instance exposes view to its patterns array (immutable)
+```js
+import { hash as phrase } from 'paraphrase';
 
 phrase.patterns // [ /#{([^{}]*)}/gm ]
 ```

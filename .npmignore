@@ -1,4 +1,5 @@
 .*
 *.log
 src/
-babel.config.json
+scripts/
+jest.config.js

@@ -1,3 +1,9 @@
+# 3.1.1 2023-01-26
+
+## Enhancement
+
+Add sourcemap files
+
 # 3.1.0 2022-11-29
 
 ## Features

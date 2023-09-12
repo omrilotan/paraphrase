@@ -9,6 +9,13 @@ const dummy = {
     },
   },
   nowhere: null,
+  list: [
+    "A",
+    "B",
+    {
+      key: "balue",
+    },
+  ],
 };
 
 describe("notate", (): void => {
@@ -26,4 +33,10 @@ describe("notate", (): void => {
 
   it("resolves null data", (): void =>
     expect(notate(dummy, "nowhere.else")).toBeNull());
+
+  it("Resolves parts of an array", (): void =>
+    expect(notate(dummy, "list.0")).toBe("A"));
+
+  it("Resolves objects in an array", (): void =>
+    expect(notate(dummy, "list.2.key")).toBe("balue"));
 });

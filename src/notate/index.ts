@@ -23,7 +23,7 @@
 export function notate(source: any, string: string = ""): any {
   if (typeof string !== "string") {
     throw new TypeError(
-      `Expected notation query to be a string, instead got ${typeof string} (${string})`
+      `Expected notation query to be a string, instead got ${typeof string} (${string})`,
     );
   }
   return string
@@ -31,6 +31,6 @@ export function notate(source: any, string: string = ""): any {
     .reduce(
       (previous, current) =>
         typeof previous === "object" && previous ? previous[current] : previous,
-      source
+      source,
     );
 }

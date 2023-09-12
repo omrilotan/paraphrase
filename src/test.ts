@@ -34,7 +34,7 @@ describe("paraphrase", (): void => {
       const phrase = paraphrase(
         /\${([^{}]*)}/g,
         /%{([^{}]*)}/g,
-        /{{([^{}]*)}}/g
+        /{{([^{}]*)}}/g,
       );
       const first = "Martin";
       const last = "Prince";
@@ -66,7 +66,7 @@ describe("paraphrase", (): void => {
         null as any,
         /\${([^{}]*)}/g,
         [/%{([^{}]*)}/g],
-        { recursive: false }
+        { recursive: false },
       );
       const first = "Martin";
       const last = "Prince";
@@ -82,7 +82,7 @@ describe("paraphrase", (): void => {
       const phrase = paraphrase(...patterns);
       expect(Array.isArray(phrase.patterns)).toBe(true);
       expect(
-        phrase.patterns.every((pattern) => pattern instanceof RegExp)
+        phrase.patterns.every((pattern) => pattern instanceof RegExp),
       ).toBe(true);
       expect(phrase.patterns[0]).toBe(patterns[0]);
     });
@@ -162,7 +162,7 @@ describe("paraphrase", (): void => {
         [{ key: "Balue", toString: () => "A String" }, "${1}"],
       ])("resolve %s to %s", (arg, expected): void => {
         expect(phrase("Hello, ${0} ${1}", "Martin", arg)).toBe(
-          `Hello, Martin ${expected}`
+          `Hello, Martin ${expected}`,
         );
       });
 
@@ -194,7 +194,7 @@ describe("paraphrase", (): void => {
           last_name: "Prince",
         };
         expect(phraseNoRecursive(string, data)).toBe(
-          "Hello, ${first_name} ${last_name}"
+          "Hello, ${first_name} ${last_name}",
         );
       });
     });
@@ -220,13 +220,13 @@ describe("paraphrase", (): void => {
   describe("flavours", (): void => {
     test.each(flavours)("%s → %s", (fn, template) => {
       expect(fn(template, { name: "Martin", last: "King" })).toBe(
-        "Hello, Martin King"
+        "Hello, Martin King",
       );
     });
 
     test.each(flavours)('"loose" can parse (%s) %s', (_, template) => {
       expect(loose(template, { name: "Martin", last: "King" })).toBe(
-        "Hello, Martin King"
+        "Hello, Martin King",
       );
     });
   });

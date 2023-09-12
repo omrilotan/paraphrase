@@ -78,7 +78,7 @@ export function paraphrase(
   ): string {
     if (typeof string !== "string") {
       throw new TypeError(
-        `paraphrase expects first argument to be a string, got a ${typeof string} (${string})`
+        `paraphrase expects first argument to be a string, got a ${typeof string} (${string})`,
       );
     }
 
@@ -111,7 +111,7 @@ export function paraphrase(
     const result = (patterns as RegExp[]).reduce(
       (string: string, pattern: RegExp): string =>
         string.replace(pattern, replace),
-      string
+      string,
     );
 
     return !options.recursive || string === result
@@ -136,5 +136,5 @@ export const loose = paraphrase(
   flavours.double,
   flavours.percent,
   flavours.hash,
-  flavours.single
+  flavours.single,
 );

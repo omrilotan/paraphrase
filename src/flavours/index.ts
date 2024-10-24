@@ -1,22 +1,24 @@
-export const flavours: Record<string, RegExp> = {
-  /**
-   * Template: 'Hello, ${name}'
-   */
-  dollar: /\${([^{}]*)}/gm,
-  /**
-   * Template: 'Hello, {{name}}'
-   */
-  double: /{{([^{}]*)}}/gm,
-  /**
-   * Template: 'Hello, {name}'
-   */
-  single: /{([^{}]*)}/gm,
-  /**
-   * Template: 'Hello, #{name}'
-   */
-  hash: /#{([^{}]*)}/gm,
-  /**
-   * Template: 'Hello, %{name}'
-   */
-  percent: /%{([^{}]*)}/gm,
-};
+/**
+ * Template: 'Hello, ${name}'
+ */
+export const dollarPattern = /\${([^{}]*)}/gm;
+
+/**
+ * Template: 'Hello, {{name}}'
+ */
+export const doublePattern = /{{([^{}]*)}}/gm;
+
+/**
+ * Template: 'Hello, {name}'
+ */
+export const singlePattern = /{([^{}]*)}/gm;
+
+/**
+ * Template: 'Hello, #{name}'
+ */
+export const hashPattern = /#{([^{}]*)}/gm;
+
+/**
+ * Template: 'Hello, %{name}'
+ */
+export const percentPattern = /%{([^{}]*)}/gm;

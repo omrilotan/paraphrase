@@ -1,3 +1,9 @@
+# 3.1.2 2023-09-12
+
+## Improvement
+
+Optimise tree shaking: Omit "falvoured" variables if not used.
+
 # 3.1.1 2023-01-26
 
 ## Enhancement

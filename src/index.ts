@@ -1,6 +1,12 @@
 import { notate } from "./notate/index";
 import { isObject } from "./isObject/index";
-import { flavours } from "./flavours/index";
+import {
+  dollarPattern,
+  doublePattern,
+  percentPattern,
+  hashPattern,
+  singlePattern,
+} from "./flavours/index";
 
 /**
  * Valid types of results for the interpolated string
@@ -104,8 +110,8 @@ export function paraphrase(
       return VALID_RESULT_TYPES.includes(typeof replacement as any)
         ? replacement
         : options.clean
-        ? ""
-        : haystack;
+          ? ""
+          : haystack;
     }
 
     const result = (patterns as RegExp[]).reduce(
@@ -126,15 +132,15 @@ export function paraphrase(
   return phraser as Phraser;
 }
 
-export const dollar = paraphrase(flavours.dollar);
-export const double = paraphrase(flavours.double);
-export const single = paraphrase(flavours.single);
-export const percent = paraphrase(flavours.percent);
-export const hash = paraphrase(flavours.hash);
+export const dollar = paraphrase(dollarPattern);
+export const double = paraphrase(doublePattern);
+export const single = paraphrase(singlePattern);
+export const percent = paraphrase(percentPattern);
+export const hash = paraphrase(hashPattern);
 export const loose = paraphrase(
-  flavours.dollar,
-  flavours.double,
-  flavours.percent,
-  flavours.hash,
-  flavours.single,
+  dollarPattern,
+  doublePattern,
+  percentPattern,
+  hashPattern,
+  singlePattern,
 );

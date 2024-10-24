@@ -1,6 +1,6 @@
 {
   "name": "paraphrase",
-  "version": "3.1.1",
+  "version": "3.1.2",
   "description": "🧩 Create flavoured string template interpolation",
   "keywords": [
     "string",
@@ -55,7 +55,7 @@
   },
   "devDependencies": {
     "@types/jest": "^29.4.0",
-    "esbuild": "^0.19.2",
+    "esbuild": "^0.24.0",
     "jest": "^29.4.0",
     "prettier": "^3.0.3",
     "ts-jest": "^29.0.5"

@@ -8,17 +8,14 @@ jobs:
     permissions:
       actions: read
       contents: write
-    strategy:
-      fail-fast: false
-      matrix:
-        os:
-          - "ubuntu-latest"
-        node-version:
-          - "22"
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+      - run: node --version
       - run: npm i
-      - run: npm t -- -u
+      - run: npm t
       - run: npm run format
       - name: commit auto fixes
         env:

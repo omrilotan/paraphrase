@@ -1,6 +1,6 @@
-/* eslint-env mocha */
-
-import { notate } from ".";
+import { describe, it } from "node:test";
+import assert from "node:assert";
+import { notate } from "./index.ts";
 
 const dummy = {
   top: {
@@ -20,23 +20,23 @@ const dummy = {
 
 describe("notate", (): void => {
   it("Should throw an error when non string is supposed to be processed", (): void =>
-    expect(() => notate({}, null as any)).toThrow(TypeError));
+    assert.throws(() => notate({}, null as any), TypeError));
 
   it("Resolves to nested data structure", (): void =>
-    expect(notate(dummy, "top.middle")).toEqual({ low: "value" }));
+    assert.deepStrictEqual(notate(dummy, "top.middle"), { low: "value" }));
 
   it("Resolves to an object", (): void =>
-    expect(notate(dummy, "top.middle.low")).toBe("value"));
+    assert.strictEqual(notate(dummy, "top.middle.low"), "value"));
 
   it("Resolves missing data to 'undefined'", (): void =>
-    expect(notate(dummy, "missing.data")).toBeUndefined());
+    assert.strictEqual(notate(dummy, "missing.data"), undefined));
 
   it("resolves null data", (): void =>
-    expect(notate(dummy, "nowhere.else")).toBeNull());
+    assert.strictEqual(notate(dummy, "nowhere.else"), null));
 
   it("Resolves parts of an array", (): void =>
-    expect(notate(dummy, "list.0")).toBe("A"));
+    assert.strictEqual(notate(dummy, "list.0"), "A"));
 
   it("Resolves objects in an array", (): void =>
-    expect(notate(dummy, "list.2.key")).toBe("balue"));
+    assert.strictEqual(notate(dummy, "list.2.key"), "balue"));
 });

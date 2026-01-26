@@ -1,12 +1,12 @@
-import { notate } from "./notate/index";
-import { isObject } from "./isObject/index";
+import { notate } from "./notate/index.ts";
+import { isObject } from "./isObject/index.ts";
 import {
   dollarPattern,
   doublePattern,
   percentPattern,
   hashPattern,
   singlePattern,
-} from "./flavours/index";
+} from "./flavours/index.ts";
 
 /**
  * Valid types of results for the interpolated string
@@ -88,9 +88,7 @@ export function paraphrase(
       );
     }
 
-    if (!data) {
-      return string;
-    }
+    if (!data) return string;
 
     if (VALID_RESULT_TYPES.includes(typeof data as any)) {
       data = [data, ...replacements];
@@ -105,7 +103,7 @@ export function paraphrase(
     function replace(haystack: string, needle: string): string {
       const replacement = options.resolve
         ? notate(data, needle.trim())
-        : data[needle.trim()];
+        : (data as Record<string, any>)[needle.trim()];
 
       return VALID_RESULT_TYPES.includes(typeof replacement as any)
         ? replacement
